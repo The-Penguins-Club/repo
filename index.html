@@ -1,30 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Penguins Club F-Droid Repo</title>
     <style>
-        body { 
-            text-align: center 
+        body {
+            text-align: center;
         }
-       
+        
+        h2 {
+            font-weight: normal;
+        }
+        
+        h4 {
+            text-align: center;
+            border-bottom: 1px solid #767676;
+            line-height: 0.1em;
+            margin: 15px 0 10px;
+        }
+        
+        h4 span {
+            background: #fff;
+            padding: 0 10px;
+        }
+        
+        .center {
+            margin: auto;
+            width: 40%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .start {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .link {
+            word-wrap: break-word;
+        }
+        
+        .btn {
+            padding: 9px;
+            background-color: #4D90FD;
+            color: #fff;
+            outline: none;
+            border-width: 0px;
+        }
+        
+        .inp {
+            padding: 8px;
+            border-width: 1px;
+            border-color: #4D90FD;
+        }
     </style>
 </head>
+
 <body>
     <h1>The Penguins Club F-Droid Repo</h1>
-    <p>To add this repo in F-Droid:
-        <li>Copy the URL bellow QR code</li>
-        <li>Open F-Droid</li> 
-       <li>Go to Settings</li>
-       <li>Go to Repositorys</li>
-       <li>Click on the plus(+) button on top right</li>
-    <br>   
+    <h2><u>To add this repo in F-Droid:</u></h2>
+    <div class="start">
+        <div align="left">
+            <p>1. Copy the link below:</p>
+            <div align="center">
+                <input class="inp" id="inpBox" type="text"><button class="btn" id="boo" onclick="copyUrl()">
+                Copy
+            </button>
+            </div>
+            <p>2. Open <b>F-Droid</b> app</p>
+            <p>3. Go to <b>Settings</b></p>
+            <p>4. Go to <b>Repositories</b></p>
+            <p>5. Click on the plus (<b>+</b>) button on the top right</p>
+        </div>
+    </div>
     The Repository address and the Fingerprint field should auto populate.
+    <div class="center">
+        <h4> <span> OR </span> </h4>
+    </div>
+    <p>Scan the QR code bellow and open with F-Droid</p>
+    <img src="https://raw.githubusercontent.com/The-Penguins-Club/repo/master/repo-qr.png" alt="F-Droid Repo QR code" width="250" height="250">
+    <p class="link">
+        <a id="repoUrl"></a>
     </p>
-    <p>Or scan the QR bellow and open with F-Droid</p>
-    <img src="repo-qr.png" alt="The Penguins Club F-Droid Repo URL" width="250" height="300">
-    <p><a href="https://the-penguins-club.github.io/repo?fingerprint=51441D61595B84D9571F7098C667D74D3EB018EAC5F99123854326478E309279">https://the-penguins-club.github.io/repo?fingerprint=51441D61595B84D9571F7098C667D74D3EB018EAC5F99123854326478E309279</a></p>
+    <script>
+        const url = "https://the-penguins-club.github.io/repo?fingerprint=51441D61595B84D9571F7098C667D74D3EB018EAC5F99123854326478E309279";
+        var inputBox = document.getElementById("inpBox");
+        var link = document.getElementById("repoUrl");
+        inputBox.value = url;
+        link.href = url;
+        link.innerHTML = url;
+
+        function copyUrl() {
+
+            navigator.clipboard.writeText(url);
+
+            var button = document.getElementById("boo");
+            button.innerHTML = "Copied!";
+            button.style.backgroundColor = '#2ecc71';
+
+            var delay = (function() {
+                var timer = 0;
+                return function(callback, ms) {
+                    clearTimeout(timer);
+                    timer = setTimeout(callback, ms);
+                };
+            })();
+
+            delay(function() {
+                button.style.backgroundColor = '#4d90fd';
+                button.innerHTML = "Copy";
+
+            }, 3000);
+
+        }
+    </script>
+    <noscript>Please enable JavaScript in your browser!</noscript>
 </body>
+
 </html>
